@@ -30,6 +30,39 @@ impl Token {
             _ => false,
         }
     }
+
+    pub fn is_constant(&self) -> bool {
+        match self {
+            Token::Constant(_) => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_symbol(&self) -> bool {
+        match self {
+            Token::Symbol(_) => true,
+            _ => false
+        }
+    }
+
+    pub fn is_bracket(&self) -> bool {
+        match self {
+            Token::LSquirly => true,
+            Token::RSquirly => true,
+            Token::LParem => true,
+            Token::RParem => true,
+            _ => false
+        }
+    }
+
+    pub fn is_relational(&self) -> bool {
+        match self {
+            Token::Equal => true,
+            Token::GreaterThan => true,
+            Token::LessThan => true,
+            _ => false,
+        }
+    }
 }
 
 #[derive(Debug)]
