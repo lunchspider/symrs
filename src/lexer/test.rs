@@ -48,4 +48,32 @@ mod tests {
 
         Ok(())
     }
+
+    #[test]
+    fn lexer_relational_operator_test() -> anyhow::Result<()> {
+        let less_than = "<".to_string();
+        let greater_than = ">".to_string();
+
+        let less_than_equal_to = "<=".to_string();
+        let greater_than_equal_to = ">=".to_string();
+
+
+        let less_than_token = Lexer::new(less_than).peekable().next().unwrap();
+        let greater_than_token = Lexer::new(greater_than).peekable().next().unwrap();
+        let less_than_equal_to_token = Lexer::new(less_than_equal_to).peekable().next().unwrap();
+        let greater_than_equal_to_token = Lexer::new(greater_than_equal_to).peekable().next().unwrap();
+
+        assert_eq!(less_than_token, Token::LessThan);
+        assert_eq!(greater_than_token, Token::GreaterThan);
+        assert_eq!(less_than_equal_to_token, Token::LessThanEqualTo);
+        assert_eq!(greater_than_equal_to_token, Token::GreaterThanEqualTo);
+
+        assert!(less_than_token.is_relational());
+        assert!(greater_than_token.is_relational());
+        assert!(less_than_equal_to_token.is_relational());
+        assert!(greater_than_equal_to_token.is_relational());
+
+        Ok(())
+
+    }
 }
