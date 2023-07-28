@@ -13,7 +13,9 @@ pub enum Token {
     RSquirly,
     Equal,
     GreaterThan,
+    GreaterThanEqualTo,
     LessThan,
+    LessThanEqualTo,
     Eof,
     Constant(Constant),
     Symbol(String),
@@ -31,6 +33,16 @@ impl Token {
         }
     }
 
+    pub fn is_bracket(&self) -> bool {
+        match self {
+            Token::LSquirly => true,
+            Token::RSquirly => true,
+            Token::LParem => true,
+            Token::RParem => true,
+            _ => false,
+        }
+    }
+
     pub fn is_constant(&self) -> bool {
         match self {
             Token::Constant(_) => true,
@@ -38,28 +50,20 @@ impl Token {
         }
     }
 
-    pub fn is_symbol(&self) -> bool {
-        match self {
-            Token::Symbol(_) => true,
-            _ => false
-        }
-    }
-
-    pub fn is_bracket(&self) -> bool {
-        match self {
-            Token::LSquirly => true,
-            Token::RSquirly => true,
-            Token::LParem => true,
-            Token::RParem => true,
-            _ => false
-        }
-    }
-
     pub fn is_relational(&self) -> bool {
         match self {
             Token::Equal => true,
             Token::GreaterThan => true,
+            Token::GreaterThanEqualTo => true,
             Token::LessThan => true,
+            Token::LessThanEqualTo => true,
+            _ => false,
+        }
+    }
+
+    pub fn is_symbol(&self) -> bool {
+        match self {
+            Token::Symbol(_) => true,
             _ => false,
         }
     }
@@ -142,12 +146,26 @@ impl Iterator for Lexer {
             b')' => Token::RParem,
             b'+' => Token::Plus,
             b'-' => Token::Minus,
-            b'>' => Token::GreaterThan,
-            b'<' => Token::LessThan,
             b'*' => Token::Multiply,
             b'/' => Token::Div,
             b'=' => Token::Equal,
             b'^' => Token::Pow,
+            b'>' => {
+                if self.peek() == b'=' {
+                    self.read_char();
+                    Token::GreaterThanEqualTo
+                } else {
+                    Token::GreaterThan
+                }
+            }
+            b'<' => {
+                if self.peek() == b'=' {
+                    self.read_char();
+                    Token::LessThanEqualTo
+                } else {
+                    Token::LessThan
+                }
+            }
             b'a'..=b'z' | b'A'..=b'Z' | b'_' => {
                 let ident = self.read_ident();
                 return Some(match ident.as_str() {
