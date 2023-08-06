@@ -10,19 +10,29 @@ pub enum Operator {
     Subtract,
     Power,
     Negative,
+    Equal,
+    GreaterThan,
+    GreaterThanEqualTo,
+    LessThan,
+    LessThanEqualTo,
     Sentinel,
 }
 
 impl Operator {
     pub fn cmp_val(&self) -> usize {
         match self {
-            Operator::Power => 6,
-            Operator::Negative => 4,
-            Operator::Multiply => 5,
-            Operator::Divide => 5,
-            Operator::Add => 3,
-            Operator::Subtract => 3,
-            Operator::Sentinel => 1,
+            Operator::Power              => 6,
+            Operator::Negative           => 4,
+            Operator::Multiply           => 5,
+            Operator::Divide             => 5,
+            Operator::Add                => 3,
+            Operator::Subtract           => 3,
+            Operator::Equal              => 2,
+            Operator::GreaterThan        => 2,
+            Operator::GreaterThanEqualTo => 2,
+            Operator::LessThan           => 2,
+            Operator::LessThanEqualTo    => 2,  
+            Operator::Sentinel           => 1,
         }
     }
 }
@@ -51,6 +61,11 @@ impl TryFrom<Token> for Operator {
             Token::Minus => Ok(Operator::Subtract),
             Token::Div => Ok(Operator::Divide),
             Token::Pow => Ok(Operator::Power),
+            Token::Equal => Ok(Operator::Equal),
+            Token::GreaterThan => Ok(Operator::GreaterThan),
+            Token::GreaterThanEqualTo => Ok(Operator::GreaterThanEqualTo),
+            Token::LessThan => Ok(Operator::LessThan),
+            Token::LessThanEqualTo => Ok(Operator::LessThanEqualTo),
             _ => Err("Can only convert operators"),
         }
     }
@@ -66,6 +81,11 @@ impl TryFrom<&Token> for Operator {
             Token::Minus => Ok(Operator::Subtract),
             Token::Div => Ok(Operator::Divide),
             Token::Pow => Ok(Operator::Power),
+            Token::Equal => Ok(Operator::Equal),
+            Token::GreaterThan => Ok(Operator::GreaterThan),
+            Token::GreaterThanEqualTo => Ok(Operator::GreaterThanEqualTo),
+            Token::LessThan => Ok(Operator::LessThan),
+            Token::LessThanEqualTo => Ok(Operator::LessThanEqualTo),
             _ => Err("Can only convert operators"),
         }
     }
