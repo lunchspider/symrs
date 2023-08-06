@@ -3,7 +3,7 @@ mod tests {
     use crate::{lexer::lexer::Lexer, parser::Parser};
     #[test]
     fn parser_test() -> anyhow::Result<()> {
-        let input = "x".to_string();
+        let input = "x < 2".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);

@@ -1,7 +1,9 @@
 use std::iter::Peekable;
 
 use crate::error::SyntaxError;
-use crate::{lexer::lexer::Token, Expression, Operator};
+use crate::expression::Expression;
+use crate::lexer::lexer::Token;
+use crate::operator::Operator;
 use anyhow::Result;
 
 pub struct Parser<'a, T>
@@ -46,7 +48,7 @@ where
                 Ok(expr)
             }
             Token::Constant(n) => Ok(Expression::Constant(n.clone())),
-            Token::Symbol(x) => Ok(Expression::Symbol(x.clone())),
+            Token::Symbol(x) => Ok(Expression::Variable(x.clone())),
             tok => Err(SyntaxError::new_parse_error(format!(
                 "Unexpected token {:?}",
                 tok
