@@ -29,6 +29,11 @@ impl Token {
             Token::Multiply => true,
             Token::Div => true,
             Token::Pow => true,
+            Token::Equal => true,
+            Token::GreaterThan => true,
+            Token::GreaterThanEqualTo => true,
+            Token::LessThan => true,
+            Token::LessThanEqualTo => true,
             _ => false,
         }
     }
