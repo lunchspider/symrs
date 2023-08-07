@@ -87,20 +87,6 @@ mod tests {
     }
 
     #[test]
-    fn parser_test_linear_equation_1() -> anyhow::Result<()> {
-        let input = "x + y = 3".to_string();
-        let lexer = Lexer::new(input);
-        let mut iter = lexer.peekable();
-        let mut parser = Parser::new(&mut iter);
-
-        println!("Parser Created");
-
-        let exp1 = parser.parse()?;
-        dbg!(exp1);
-        Ok(())
-    }
-
-    #[test]
     fn parser_test_variable_expression_1() -> anyhow::Result<()> {
         let input = "x".to_string();
         let lexer = Lexer::new(input);
@@ -117,6 +103,48 @@ mod tests {
     #[test]
     fn parser_test_variable_expression_2() -> anyhow::Result<()> {
         let input = "(x)".to_string();
+        let lexer = Lexer::new(input);
+        let mut iter = lexer.peekable();
+        let mut parser = Parser::new(&mut iter);
+
+        println!("Parser Created");
+
+        let exp1 = parser.parse()?;
+        dbg!(exp1);
+        Ok(())
+    }
+
+    #[test]
+    fn parser_test_variable_expression_3() -> anyhow::Result<()> {
+        let input = "[x]".to_string();
+        let lexer = Lexer::new(input);
+        let mut iter = lexer.peekable();
+        let mut parser = Parser::new(&mut iter);
+
+        println!("Parser Created");
+
+        let exp1 = parser.parse()?;
+        dbg!(exp1);
+        Ok(())
+    }
+
+    #[test]
+    fn parser_test_variable_expression_4() -> anyhow::Result<()> {
+        let input = "{x}".to_string();
+        let lexer = Lexer::new(input);
+        let mut iter = lexer.peekable();
+        let mut parser = Parser::new(&mut iter);
+
+        println!("Parser Created");
+
+        let exp1 = parser.parse()?;
+        dbg!(exp1);
+        Ok(())
+    }
+
+    #[test]
+    fn parser_test_linear_equation_1() -> anyhow::Result<()> {
+        let input = "x + y = 3".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);

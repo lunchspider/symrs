@@ -47,6 +47,11 @@ where
                 self.assert_next(Token::RParem)?;
                 Ok(expr)
             }
+            Token::LBracket => {
+                let expr = self.expression(0)?;
+                self.assert_next(Token::RBracket)?;
+                Ok(expr)
+            }
             Token::LSquirly => {
                 let expr = self.expression(0)?;
                 self.assert_next(Token::RSquirly)?;
