@@ -11,6 +11,8 @@ pub enum Token {
     RParem,
     LSquirly,
     RSquirly,
+    LBracket,
+    RBracket,
     Equal,
     GreaterThan,
     GreaterThanEqualTo,
@@ -44,6 +46,7 @@ impl Token {
             Token::RSquirly => true,
             Token::LParem => true,
             Token::RParem => true,
+            Token::LBracket | Token::RBracket => true,
             _ => false,
         }
     }
@@ -149,6 +152,8 @@ impl Iterator for Lexer {
             b'}' => Token::RSquirly,
             b'(' => Token::LParem,
             b')' => Token::RParem,
+            b'[' => Token::LBracket,
+            b']' => Token::RBracket,
             b'+' => Token::Plus,
             b'-' => Token::Minus,
             b'*' => Token::Multiply,

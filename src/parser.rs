@@ -47,6 +47,11 @@ where
                 self.assert_next(Token::RParem)?;
                 Ok(expr)
             }
+            Token::LSquirly => {
+                let expr = self.expression(0)?;
+                self.assert_next(Token::RSquirly)?;
+                Ok(expr)
+            }
             Token::Constant(n) => Ok(Expression::Constant(n.clone())),
             Token::Symbol(x) => Ok(Expression::Variable(x.clone())),
             tok => Err(SyntaxError::new_parse_error(format!(

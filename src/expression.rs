@@ -1,4 +1,4 @@
-use std::{collections::HashMap, ops::Add};
+//use std::ops::Add;
 
 use crate::{operator::Operator, Constant};
 
@@ -17,10 +17,10 @@ pub enum Expression {
 //    pub fn get_coefficients(&self) -> HashMap<String, Expression> {}
 //}
 
-impl Add for Expression {
-    type Output = Self;
-
-    fn add(self, rhs: Self) -> Self::Output {
-        todo!()
-    }
-}
+//impl Add for Expression {
+//    type Output = Self;
+//
+//    fn add(self, rhs: Self) -> Self::Output {
+//        todo!()
+//    }
+//}

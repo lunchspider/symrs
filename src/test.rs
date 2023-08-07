@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::{lexer::lexer::Lexer, parser::Parser, expression::Expression};
+    use crate::{lexer::lexer::Lexer, parser::Parser};
 
     #[test]
     fn parser_test_equal() -> anyhow::Result<()> {
@@ -8,23 +8,23 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
     }
-    
+
     #[test]
     fn parser_test_less_than() -> anyhow::Result<()> {
         let input = "x < 2".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -36,9 +36,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -50,9 +50,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -64,9 +64,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -78,9 +78,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -92,9 +92,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -106,9 +106,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -120,9 +120,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -134,9 +134,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -148,9 +148,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -162,9 +162,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -176,9 +176,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -190,9 +190,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
@@ -204,23 +204,23 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse()?;
         dbg!(exp1);
         Ok(())
     }
 
     #[test]
-    fn parser_test_invalid_expression_01() -> anyhow::Result<()> {
+    pub fn parser_test_invalid_expression_01() -> anyhow::Result<()> {
         let input = "()".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -240,9 +240,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -262,9 +262,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -278,17 +278,15 @@ mod tests {
         }
     }
 
-    // TODO: for parser_test_invalid_expression 4 to 10 add [] in lexer
     #[test]
     fn parser_test_invalid_expression_04() -> anyhow::Result<()> {
-        todo!();
         let input = "[".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -304,14 +302,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_05() -> anyhow::Result<()> {
-        todo!();
         let input = "]".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -327,14 +324,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_06() -> anyhow::Result<()> {
-        todo!();
         let input = "[]".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -350,14 +346,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_07() -> anyhow::Result<()> {
-        todo!();
         let input = "[()]".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -373,14 +368,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_08() -> anyhow::Result<()> {
-        todo!();
         let input = "([])".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -396,14 +390,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_09() -> anyhow::Result<()> {
-        todo!();
         let input = "([)]".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -419,14 +412,13 @@ mod tests {
 
     #[test]
     fn parser_test_invalid_expression_10() -> anyhow::Result<()> {
-        todo!();
         let input = "([x)]".to_string();
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -446,9 +438,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -468,9 +460,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -490,9 +482,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -512,9 +504,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -534,9 +526,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -556,9 +548,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -578,9 +570,9 @@ mod tests {
         let lexer = Lexer::new(input);
         let mut iter = lexer.peekable();
         let mut parser = Parser::new(&mut iter);
-        
+
         println!("Parser Created");
-        
+
         let exp1 = parser.parse();
         match exp1 {
             Ok(exp) => {
@@ -593,5 +585,4 @@ mod tests {
             }
         }
     }
-
 }
