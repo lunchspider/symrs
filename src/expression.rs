@@ -1,4 +1,4 @@
-//use std::ops::Add;
+use std::ops::{Add, Div, Mul, Sub};
 
 use crate::{operator::Operator, Constant};
 
@@ -13,14 +13,34 @@ pub enum Expression {
     Variable(String),
 }
 
-//impl Expression {
-//    pub fn get_coefficients(&self) -> HashMap<String, Expression> {}
-//}
+impl Add for Expression {
+    type Output = Self;
 
-//impl Add for Expression {
-//    type Output = Self;
-//
-//    fn add(self, rhs: Self) -> Self::Output {
-//        todo!()
-//    }
-//}
+    fn add(self, rhs: Self) -> Self::Output {
+        Expression::Binary(Operator::Add, Box::new(self), Box::new(rhs))
+    }
+}
+
+impl Sub for Expression {
+    type Output = Self;
+
+    fn sub(self, rhs: Self) -> Self::Output {
+        Expression::Binary(Operator::Subtract, Box::new(self), Box::new(rhs))
+    }
+}
+
+impl Mul for Expression {
+    type Output = Self;
+
+    fn mul(self, rhs: Self) -> Self::Output {
+        Expression::Binary(Operator::Multiply, Box::new(self), Box::new(rhs))
+    }
+}
+
+impl Div for Expression {
+    type Output = Self;
+
+    fn div(self, rhs: Self) -> Self::Output {
+        Expression::Binary(Operator::Divide, Box::new(self), Box::new(rhs))
+    }
+}
