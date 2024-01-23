@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use std::{cmp::Ordering, fmt::Display};
 
 use crate::lexer::lexer::Token;
 
@@ -88,5 +88,25 @@ impl TryFrom<&Token> for Operator {
             Token::LessThanEqualTo => Ok(Operator::LessThanEqualTo),
             _ => Err("Can only convert operators"),
         }
+    }
+}
+
+impl Display for Operator {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let value = match self {
+            Operator::Add => "+",
+            Operator::Multiply => "×",
+            Operator::Divide => "÷",
+            Operator::Subtract => "-",
+            Operator::Power => "^",
+            Operator::Negative => "-",
+            Operator::Equal => "=",
+            Operator::GreaterThan => ">",
+            Operator::GreaterThanEqualTo => "≥",
+            Operator::LessThan => "<",
+            Operator::LessThanEqualTo => "≤",
+            Operator::Sentinel => "",
+        };
+        write!(f, "{}", value)
     }
 }

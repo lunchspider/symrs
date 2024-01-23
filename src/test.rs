@@ -344,4 +344,13 @@ mod tests {
 
         Ok(())
     }
+
+    #[test]
+    fn test_display() -> anyhow::Result<()> {
+        let input = "x + y * (x + y)".to_string();
+
+        let exp = parse_input(input)?;
+        assert_eq!(&format!("{}", exp), "x + (y × (x + y))");
+        Ok(())
+    }
 }
